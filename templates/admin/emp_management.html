@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worklytics Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/emp_management.css">
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-left">
+            <div class="brand-container">
+                <img src="../../static/images/worklytics_logo.png" alt="Logo" class="main-logo">
+                <span class="brand-name">Worklytics</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    <img src="../../static/images/admin_icon.png" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <p class="user-name">Admin</p>
+                    <p class="user-role">Administrator</p>
+                </div>
+            </div>
+
+            <nav class="side-nav">
+                <ul>
+                    <li>
+                        <img src="../../static/images/dashboard_icon.png" alt="Dashboard" class="nav-icon-img">
+                        <a href="/admin-dashboard">Dashboard</a>
+                    </li>
+                    <li class="active">
+                        <img src="../../static/images/employee_management_icon.png" alt="Employee Management" class="nav-icon-img">
+                        <a href="/employee-management">Employee Management</a>
+                    </li>
+                    <li>
+                        <img src="../../static/images/employee_review.png" alt="Employee Review" class="nav-icon-img">
+                        <a href="/employee-review">Employee Review</a>
+                    </li>
+                    <li>
+                        <img src="../../static/images/history_icon.png" alt="Performance Tracking" class="nav-icon-img">
+                        <a href="/review-history">Review History</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="logout-link">
+                    <span class="nav-icon">🚪</span>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-body">
+        <div class="white-container">
+        <div class="list-header">
+            <h2>Employee List</h2>
+            <div class="header-actions">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search by name or ID...">
+                </div>
+                
+            <div class="filter-dropdown">
+                <select id="sortType">
+                    <option value="id_asc">Employee ID (Asc)</option>
+                    <option value="id_desc">Employee ID (Desc)</option>
+                    <option value="name_asc">Name (A-Z)</option>
+                    <option value="name_desc">Name (Z-A)</option>
+                </select>
+            </div>
+
+            <div class="filter-dropdown">
+                <select id="deptFilter">
+                    <option value="All">All Departments</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Human Resources">Human Resources</option>
+                </select>
+            </div>
+
+            <button class="add-btn-icon" id="addEmployeeBtn">
+                <img src="../../static/images/add_employee_icon.png" alt="Add Employee" class="add-icon-img">
+            </button>
+            </div>
+        </div>
+
+        <div class="employee-table-wrapper">
+            <table class="employee-table">
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Employee Name</th>
+                        <th>Department</th>
+                        <th>Position</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody id="employeeTableBody"></tbody>
+            </table>
+        </div>
+        </div>
+        </main>
+        <div id="addEmployeeModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h3>Add New Employee</h3>
+        </div>
+        <hr>
+        <form id="addEmployeeForm">
+            <div class="form-scroll-area">
+                <div class="form-row">
+                    <div class="input-container">
+                    <label>Employee ID</label>
+                        <input type="text" name="emp_id" id="emp_id_input" placeholder="Employee ID" readonly>
+                    </div>
+                    <div class="input-container">
+                        <label>Full Name</label>
+                        <input type="text" name="full_name" placeholder="e.g., John Doe" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-container">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="e.g., john.doe@example.com" required>
+                    </div>
+                    <div class="input-container with-label">
+                        <label>Date of Birth</label>
+                        <input type="date" name="dob" id="dob" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-container">
+                        <label>Gender</label>
+                        <select name="gender" required>
+                            <option value="">Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Non-Binary">Non-Binary</option>
+                            <option value="Prefer Not To Say">Prefer Not To Say</option>
+                        </select>
+                    </div>
+                    <div class="input-container">
+                        <label>Marital Status</label>
+                        <select name="marital_status" required>
+                            <option value="">Marital Status</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-container">
+                        <label>Ethnicity</label>
+                        <select name="ethnicity" required>
+                            <option value="">Ethnicity</option>
+                            <option value="Malay">Malay</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="Indian">Indian</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    <div class="input-container">
+                        <label>State (Work Location)</label>
+                        <select name="state" required>
+                            <option value="">State (Work Location)</option>
+                            <option value="Selangor">Selangor</option>
+                            <option value="Kuala Lumpur">Kuala Lumpur</option>
+                            <option value="Penang">Penang</option>
+                            <option value="Perak">Perak</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-container">
+                        <label>Education Level</label>
+                        <select name="education" required>
+                            <option value="">Education Level</option>
+                            <option value="1">Below College</option>
+                            <option value="2">College</option>
+                            <option value="3">Bachelor</option>
+                            <option value="4">Master</option>
+                            <option value="5">Doctorate</option>
+                        </select>
+                    </div>
+                    <div class="input-container">
+                        <label>Education Field</label>
+                        <select name="education_field" required>
+                            <option value="">Education Field</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Systems">Information Systems</option>
+                            <option value="Technical Degree">Technical Degree</option>
+                            <option value="Business Studies">Business Studies</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Economics">Economics</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-container">
+                        <label>Department</label>
+                        <select name="department" id="deptSelect" required>
+                            <option value="">Select Department</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Sales">Sales</option>
+                            <option value="Human Resources">Human Resources</option>
+                        </select>
+                    </div>
+                    <div class="input-container">
+                        <label>Position</label>
+                        <select name="position" id="posSelect" required disabled>
+                            <option value="">Select Position</option>
+                            <option value="Engineering Manager" data-dept="Technology">Engineering Manager</option>
+                            <option value="Analytics Manager" data-dept="Technology">Analytics Manager</option>
+                            <option value="Data Scientist" data-dept="Technology">Data Scientist</option>
+                            <option value="Machine Learning Engineer" data-dept="Technology">Machine Learning Engineer</option>
+                            <option value="Software Engineer" data-dept="Technology">Software Engineer</option>
+                            <option value="Senior Software Engineer" data-dept="Technology">Senior Software Engineer</option>
+                            <option value="Manager" data-dept="Sales">Sales Manager</option>
+                            <option value="Sales Executive" data-dept="Sales">Sales Executive</option>
+                            <option value="Sales Representative" data-dept="Sales">Sales Representative</option>
+                            <option value="HR Manager" data-dept="Human Resources">HR Manager</option>
+                            <option value="Recruiter" data-dept="Human Resources">Recruiter</option>
+                            <option value="HR Executive" data-dept="Human Resources">HR Executive</option>
+                            <option value="HR Business Partner" data-dept="Human Resources">HR Business Partner</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-container">
+                        <label>Monthly Salary (MYR)</label>
+                        <input type="number" name="salary" placeholder="e.g., 5000" min="0" required>
+                    </div>
+                    <div class="input-container">
+                        <label>Distance from Home (KM)</label>
+                        <input type="number" name="distance_km" placeholder="e.g., 10" min="0" max="100" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-container">
+                        <label>Business Travel</label>
+                        <select name="business_travel" required>
+                            <option value="">Business Travel</option>
+                            <option value="No Travel">No Travel</option>
+                            <option value="Some Travel">Some Travel</option>
+                            <option value="Frequently">Frequently</option>
+                        </select>
+                    </div>
+                    <div class="input-container">
+                        <label>Overtime per Month</label>
+                        <select name="over_time" required>
+                            <option value="">Overtime</option>
+                            <option value="Yes">exceed 20 hours</option>
+                            <option value="No">less than 20 hours</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-container">
+                        <label>Manager</label>
+                        <select name="manager_id" id="managerSelect">
+                            <option value="">Assign Manager (Optional)</option>
+                        </select>
+                    </div>
+                    <div class="input-container">
+                        <label>Stock Option Level</label>
+                        <input type="number" name="stock_option_level" placeholder="Stock Option (0-3)" min="0" max="3" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-footer">
+                <button type="submit" class="btn-save">Save Employee</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+<script src="../../static/js/emp_management.js"></script>
+<script src="../../static/js/logout.js"></script>
+</body>
+</html>

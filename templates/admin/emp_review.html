@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worklytics Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/emp_review.css">
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-left">
+            <div class="brand-container">
+                <img src="../../static/images/worklytics_logo.png" alt="Logo" class="main-logo">
+                <span class="brand-name">Worklytics</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    <img src="../../static/images/admin_icon.png" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <p class="user-name">Admin</p>
+                    <p class="user-role">Administrator</p>
+                </div>
+            </div>
+
+            <nav class="side-nav">
+                <ul>
+                    <li>
+                        <img src="../../static/images/dashboard_icon.png" alt="Dashboard" class="nav-icon-img">
+                        <a href="/admin-dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                        <img src="../../static/images/employee_management_icon.png" alt="Employee Management" class="nav-icon-img">
+                        <a href="/employee-management">Employee Management</a>
+                    </li>
+                    <li class="active">
+                        <img src="../../static/images/employee_review.png" alt="Employee Review" class="nav-icon-img">
+                        <a href="/employee-review">Employee Review</a>
+                    </li>
+                    <li>
+                        <img src="../../static/images/history_icon.png" alt="Performance Tracking" class="nav-icon-img">
+                        <a href="/review-history">Review History</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="logout-link">
+                    <span class="nav-icon">🚪</span>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-body">
+            <div class="white-container">
+                <div class="header-container">
+                    <div class="header-text">
+                        <h2>Employee Performance Review</h2>
+                        <p>Manage and update performance metrics for all employees.</p>
+                    </div>
+                </div>
+                
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="deptFilter">Department:</label>
+                    <select id="deptFilter">
+                        <option value="All">All Departments</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Human Resources">Human Resources</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sortType">Sort By:</label>
+                    <select id="sortType">
+                        <option value="id_asc">Employee ID (Ascending)</option>
+                        <option value="id_desc">Employee ID (Descending)</option>
+                        <option value="name_asc">Name (A-Z)</option>
+                        <option value="name_desc">Name (Z-A)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="riskFilter">Risk Status:</label>
+                    <select id="riskFilter">
+                        <option value="All">All</option>
+                        <option value="High">High Risk</option>
+                        <option value="Medium">Medium Risk</option>
+                        <option value="Low">Low Risk</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="searchInput" placeholder="Search by name or ID...">
+                </div>
+            </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="employee-table">
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Position</th>
+                            <th>Risk Status</th>
+                            <th>Latest Review Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reviewTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div id="reviewModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeReviewModal()">&times;</span>
+        <h3>Performance Review: <span id="review_name_display"></span></h3>
+        <form id="performanceReviewForm">
+            <input type="hidden" name="employee_id" id="review_emp_id">
+            
+            <div class="review-grid">
+                <div class="review-card">
+                    <h4>Satisfaction Levels (1-5)</h4>
+                    <label>Environment:</label>
+                    <input type="range" name="env_satisfaction" min="1" max="5" value="3" oninput="this.nextElementSibling.value = this.value">
+                    <output>3</output>
+
+                    <label>Job Satisfaction:</label>
+                    <input type="range" name="job_satisfaction" min="1" max="5" value="3" oninput="this.nextElementSibling.value = this.value">
+                    <output>3</output>
+
+                    <label>Relationship:</label>
+                    <input type="range" name="rel_satisfaction" min="1" max="5" value="3" oninput="this.nextElementSibling.value = this.value">
+                    <output>3</output>
+                </div>
+
+                <div class="review-card">
+                    <h4>Ratings (1-5)</h4>
+                    <input type="number" name="self_rating" placeholder="Self Rating" min="1" max="5" required>
+                    <input type="number" name="manager_rating" placeholder="Manager Rating" min="1" max="5" required>
+                </div>
+
+                <div class="review-card">
+                    <h4>KPIs (100%)</h4>
+                    <input type="number" name="target_kpi" placeholder="Target KPI (%)" step="0.1" min="0" max="100" required>
+                    <input type="number" name="actual_kpi" placeholder="Actual KPI (%)" step="0.1" min="0" max="100" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-save">Submit Review</button>
+        </form>
+    </div>
+</div>
+<script src="../../static/js/emp_review.js"></script>
+<script src="../../static/js/logout.js"></script>
+</body>
+</html>

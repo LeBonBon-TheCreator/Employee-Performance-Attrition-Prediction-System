@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worklytics Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/personal_info.css">
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-left">
+            <div class="brand-container">
+                <img src="../../static/images/worklytics_logo.png" alt="Logo" class="main-logo">
+                <span class="brand-name">Worklytics</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    <img src="../../static/images/emp_icon.png" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <p class="user-name" id="side_name">Loading...</p>
+                    <p class="user-role" id="side_role">Employee</p>
+                </div>
+            </div>
+
+            <nav class="side-nav">
+                <ul>
+                    <li>
+                        <img src="../../static/images/dashboard_icon.png" alt="Dashboard" class="nav-icon-img">
+                        <a href="/employee-dashboard">Dashboard</a>
+                    </li>
+                    <li class="active">
+                        <img src="../../static/images/personal_info.png" alt="Personal Information" class="nav-icon-img">
+                        <a href="/employee-info">Personal Information</a>
+                    </li>
+                    <li>
+                        <img src="../../static/images/change_pwd.png" alt="Change Password" class="nav-icon-img">
+                        <a href="/change-password">Change Password</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="logout-link">
+                    <span class="nav-icon">🚪</span>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-body">
+            <div class="white-container flush-top">
+    <div class="profile-header-section">
+        <h2>Personal Information</h2>
+        <p>Manage and view your official employee records</p>
+    </div>
+
+    <div class="info-grid">
+        <div class="info-section">
+            <h3><span class="icon">👤</span> Identity & Bio</h3>
+            <div class="detail-row"><span>Full Name:</span> <strong id="p_name">-</strong></div>
+            <div class="detail-row"><span>Employee ID:</span> <strong id="p_id">-</strong></div>
+            <div class="detail-row"><span>Date of Birth:</span> <strong id="p_dob">-</strong></div>
+            <div class="detail-row"><span>Gender:</span> <strong id="p_gender">-</strong></div>
+            <div class="detail-row"><span>Ethnicity:</span> <strong id="p_ethnicity">-</strong></div>
+        </div>
+
+        <div class="info-section">
+            <h3><span class="icon">💼</span> Current Assignment</h3>
+            <div class="detail-row"><span>Department:</span> <strong id="p_dept">-</strong></div>
+            <div class="detail-row"><span>Position:</span> <strong id="p_pos">-</strong></div>
+            <div class="detail-row"><span>Role Start:</span> <strong id="p_role_start">-</strong></div>
+            <div class="detail-row"><span>Last Promotion:</span> <strong id="p_promo">-</strong></div>
+            <div class="detail-row"><span>Salary (Monthly):</span> <strong id="p_salary">-</strong></div>
+        </div>
+
+        <div class="info-section">
+            <h3><span class="icon">🎓</span> Background & Growth</h3>
+            <div class="detail-row"><span>Education Level:</span> <strong id="p_edu">-</strong></div>
+            <div class="detail-row"><span>Field of Study:</span> <strong id="p_field">-</strong></div>
+            <div class="detail-row"><span>Marital Status:</span> <strong id="p_marital">-</strong></div>
+            <div class="detail-row"><span>Hire Date:</span> <strong id="p_hire">-</strong></div>
+        </div>
+
+        <div class="info-section">
+            <h3><span class="icon">🚗</span> Logistics & Benefits</h3>
+            <div class="detail-row"><span>Work Travel:</span> <strong id="p_travel">-</strong></div>
+            <div class="detail-row"><span>Overtime:</span> <strong id="p_ot">-</strong></div>
+            <div class="detail-row"><span>Stock Options:</span> <strong id="p_stock">-</strong></div>
+            <div class="detail-row"><span>Commute (KM):</span> <strong id="p_dist">-</strong></div>
+        </div>
+    </div>
+</div>
+        </main>
+    </div>
+
+<script src="../../static/js/personal_info.js"></script>
+<script src="../../static/js/logout.js"></script>
+</body>
+</html>

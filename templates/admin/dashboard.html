@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worklytics Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/dashboard.css">
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-left">
+            <div class="brand-container">
+                <img src="../../static/images/worklytics_logo.png" alt="Logo" class="main-logo">
+                <span class="brand-name">Worklytics</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="notification-bell">
+                <div class="icon-bell">🔔</div>
+                <span class="notification-dot"></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    <img src="../../static/images/admin_icon.png" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <p class="user-name">Admin</p>
+                    <p class="user-role">Administrator</p>
+                </div>
+            </div>
+
+            <nav class="side-nav">
+                <ul>
+                    <li class="active">
+                        <img src="../../static/images/dashboard_icon.png" alt="Dashboard" class="nav-icon-img">
+                        <a href="/admin-dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                        <img src="../../static/images/employee_management_icon.png" alt="Employee Management" class="nav-icon-img">
+                        <a href="/employee-management">Employee Management</a>
+                    </li>
+                    <li>
+                        <img src="../../static/images/employee_review.png" alt="Employee Review" class="nav-icon-img">
+                        <a href="/employee-review">Employee Review</a>
+                    </li>
+                    <li>
+                        <img src="../../static/images/history_icon.png" alt="Performance Tracking" class="nav-icon-img">
+                        <a href="/review-history">Review History</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="logout-link">
+                    <span class="nav-icon">🚪</span>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-body">
+    <div class="white-container">
+        <div class="analytics-wrapper">
+            <div class="analytics-header">
+        <div class="analytics-title">
+            <h2>Performance & Attrition Dashboard</h2>
+        </div>
+        <div class="analytics-actions">
+            <button id="syncBtn" class="sync-button">
+                <span class="sync-icon">🔄</span> Sync Data
+            </button>
+            <div class="analytics-status">
+                <span class="status-dot"></span>
+                <strong>DSS Mode:</strong> <span id="statusText">Active Insights</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay" style="display:none;">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="iframe-container">
+        <iframe 
+            id="pbiIframe"
+            title="Worklytics Dashboard"
+            src="https://app.powerbi.com/reportEmbed?reportId=07949bb6-72fb-46cd-9cdf-769b156c29b9&ctid=ae5ed6e2-682f-4436-a3d2-d07186f2c1da&autoAuth=true" 
+            frameborder="0" 
+            allowFullScreen="true">
+        </iframe>
+    </div>
+</div>
+    </div>
+</main>
+    </div>
+
+<div id="risk-alert-box" class="risk-modal">
+    <div class="risk-modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="modal-body">
+            <div class="alert-icon">⚠️</div>
+            <h3>High Risk Detected</h3>
+            <p id="risk-count-text">There are X employees identified as high risk.</p>
+            <button onclick="window.location.href='/employee-review'">View</button>
+        </div>
+    </div>
+</div>
+
+<script src="../../static/js/logout.js"></script>
+<script src="../../static/js/dashboard.js"></script>
+<script src="../../static/js/notification.js"></script>
+</body>
+</html>

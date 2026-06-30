@@ -1,0 +1,138 @@
+:root {
+    --sidebar-width: 260px;
+    --header-height: 70px;
+    --bg-light: #f8f9fa;
+    --primary-blue: #4e73df;
+    --text-main: #333;
+    --text-muted: #888;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+body { background-color: var(--bg-light); height: 100vh; overflow: hidden; }
+
+/* HEADER STYLES */
+.top-header {
+    height: var(--header-height);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    border-bottom: 1px solid #eee;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.brand-container { display: flex; align-items: center; gap: 12px; }
+.main-logo { height: 80px; width: auto; }
+.brand-name { 
+    font-family: 'Dancing Script', cursive; 
+    font-size: 28px; 
+    color: #1a1a1a; 
+}
+
+.notification-bell { position: relative; cursor: pointer; font-size: 20px; }
+.notification-dot {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background: #ff4d4d;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+/* LAYOUT WRAPPER */
+.main-layout {
+    display: flex;
+    padding-top: var(--header-height);
+    height: 100vh;
+}
+
+/* SIDEBAR STYLES */
+.sidebar {
+    width: var(--sidebar-width);
+    background: #fff;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.profile-avatar img {
+    width: 70px;
+    height: auto;
+    border-radius: 50%;
+    background: #eee;
+}
+
+.user-name { font-weight: 600; font-size: 15px; }
+.user-role { font-size: 12px; color: var(--text-muted); }
+
+/* NAV LINKS */
+.side-nav ul { list-style: none; }
+/* Sidebar Nav Link Container Adjustments */
+.side-nav li {
+    padding-left: 20px; 
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between the PNG icon and the text */
+    cursor: pointer;
+    transition: 0.2s;
+    border-left: 4px solid transparent;
+}
+
+/* Style Nav Icons */
+.nav-icon-img {
+    width: 30px; 
+    height: 30px;
+    object-fit: contain; /* Ensures the image isn't distorted */
+    display: block;
+}
+
+.side-nav li a {
+    display: flex; 
+    align-items: center;
+    padding: 20px 0; 
+    width: 100%;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+}
+
+/* Maintain active state styling from your existing code */
+.side-nav li.active {
+    background: #f0f4ff;
+    border-left-color: var(--primary-blue);
+}
+
+.side-nav li.active a {
+    color: #000;
+    font-weight: 600;
+}
+
+/* Hover effect for the whole row */
+.side-nav li:hover {
+    background: #fafafa;
+}
+
+/* FOOTER & LOGOUT */
+.sidebar-footer {
+    margin-top: auto;
+    padding: 20px 25px;
+    border-top: 1px dashed #eee;
+}
+
+.logout-link { display: flex; align-items: center; gap: 15px; cursor: pointer; color: #555; }

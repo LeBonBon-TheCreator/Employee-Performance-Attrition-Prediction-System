@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worklytics Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/emp_dashboard.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-left">
+            <div class="brand-container">
+                <img src="../../static/images/worklytics_logo.png" alt="Logo" class="main-logo">
+                <span class="brand-name">Worklytics</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    <img src="../../static/images/emp_icon.png" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <p class="user-name" id="side_name">Loading...</p>
+                    <p class="user-role" id="side_role">Employee</p>
+                </div>
+            </div>
+
+            <nav class="side-nav">
+                <ul>
+                    <li class="active">
+                        <img src="../../static/images/dashboard_icon.png" alt="Dashboard" class="nav-icon-img">
+                        <a href="/employee-dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                        <img src="../../static/images/personal_info.png" alt="Personal Information" class="nav-icon-img">
+                        <a href="/employee-info">Personal Information</a>
+                    </li>
+                    <li>
+                        <img src="../../static/images/change_pwd.png" alt="Change Password" class="nav-icon-img">
+                        <a href="/change-password">Change Password</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="logout-link">
+                    <span class="nav-icon">🚪</span>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-body">
+            <div class="white-container">
+                <div class="dashboard-header">
+    <h2>Welcome back, <span id="welcome_name">User</span>!</h2>
+    <p>Last Review Date: <strong id="last_review_date">N/A</strong></p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <span>Manager Rating</span>
+        <h2 id="mgr_rating">0.0</h2>
+    </div>
+    <div class="stat-card">
+        <span>Self Rating</span>
+        <h2 id="self_rating">0.0</h2>
+    </div>
+    <div class="stat-card">
+        <span>KPI Achievement</span>
+        <h2 id="kpi_percent">0%</h2>
+        <small id="kpi_details">Actual: 0 | Target: 0</small>
+    </div>
+</div>
+
+<div class="viz-grid">
+    <div class="chart-box">
+        <h3>Satisfaction Profile (Radar)</h3>
+        <div id="satisfactionChart"></div>
+    </div>
+    <div class="chart-box">
+        <h3>Self vs Manager Alignment</h3>
+        <div id="ratingComparisonChart"></div>
+    </div>
+</div>
+            </div>
+        </main>
+    </div>
+
+<script src="../../static/js/emp_dashboard.js"></script>
+<script src="../../static/js/logout.js"></script>
+</body>
+</html>

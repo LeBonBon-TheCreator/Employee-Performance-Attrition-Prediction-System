@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worklytics Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/review_history.css">
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="header-left">
+            <div class="brand-container">
+                <img src="../../static/images/worklytics_logo.png" alt="Logo" class="main-logo">
+                <span class="brand-name">Worklytics</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <aside class="sidebar">
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    <img src="../../static/images/admin_icon.png" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <p class="user-name">Admin</p>
+                    <p class="user-role">Administrator</p>
+                </div>
+            </div>
+
+            <nav class="side-nav">
+                <ul>
+                    <li>
+                        <img src="../../static/images/dashboard_icon.png" alt="Dashboard" class="nav-icon-img">
+                        <a href="/admin-dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                        <img src="../../static/images/employee_management_icon.png" alt="Employee Management" class="nav-icon-img">
+                        <a href="/employee-management">Employee Management</a>
+                    </li>
+                    <li>
+                        <img src="../../static/images/employee_review.png" alt="Employee Review" class="nav-icon-img">
+                        <a href="/employee-review">Employee Review</a>
+                    </li>
+                    <li class="active">
+                        <img src="../../static/images/history_icon.png" alt="Performance Tracking" class="nav-icon-img">
+                        <a href="/review-history">Review History</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="logout-link">
+                    <span class="nav-icon">🚪</span>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-body">
+            <div class="white-container">
+    <div class="header-container">
+        <div class="header-text">
+            <h2>Risk Assessment History</h2>
+        </div>
+        <div class="filter-container">
+            <div class="search-group">
+                <input type="text" id="historySearch" placeholder="Search by Name or ID..." onkeyup="filterHistory()">
+            </div>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>Date & Time</th>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Risk Score</th>
+                    <th>Risk Level</th>
+                    <th>Primary Reason</th>
+                </tr>
+            </thead>
+            <tbody id="historyTableBody">
+                </tbody>
+        </table>
+    </div>
+</div>
+            </main>
+</div>
+<script src="../../static/js/review_history.js"></script>
+<script src="../../static/js/logout.js"></script>
+</body>
+</html>
