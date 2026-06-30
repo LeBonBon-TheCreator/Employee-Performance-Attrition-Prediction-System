@@ -41,13 +41,18 @@ Following the industry-standard **CRISP-DM** methodology, this system integrates
 ## 📂 Project Structure
 
 ```text
-worklytics/
-├── app.py              # Main Flask application logic
-├── models/             # Pre-trained Random Forest model & LIME explainer
-├── static/             # CSS, JavaScript, and audio assets
-├── templates/          # HTML files for the web interface
-├── data/               # Data cleaning scripts and datasets
-└── README.md           # Project documentation
+├── app.py                # Main Flask application logic & server routing
+├── data/                 # Data cleaning scripts and datasets
+├── models/               # Pre-trained Random Forest model & LIME explainer artifacts
+├── database/             # Database initialization and management scripts
+├── static/
+│   ├── images/           # Dashboard icons image files
+│   ├── css/              # Dashboard styling files
+│   ├── js/               # Notification triggers & dynamic DOM scripts
+│   └── sounds/           # Notification alert assets (.wav)
+├── templates/            # HTML files for the web interface (modals, dashboards)
+├── models/               # Pre-trained Random Forest model & LIME explainer artifacts
+└── README.md             # Project documentation
 
 ```
 
